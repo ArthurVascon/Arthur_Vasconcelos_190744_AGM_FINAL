@@ -29,10 +29,12 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         setContentView( R.layout.activity_lista_de_personagem );
         //Título
         setTitle( "Lista de Personagens" );
-        //Alguns personagens já prontos.
-        dao.salva(new Personagem( "Ken", "1,80", "02041979" ));
-        dao.salva(new Personagem( "Ryu", "1,90", "03051979" ));
+        criaPersonagens();
+        botaoNovoPersonagem();
 
+    }
+
+    private void botaoNovoPersonagem() {
         //Mais findByID que eu já sei o que faz rs
         FloatingActionButton botaoNovoPersonagem = findViewById( R.id.floatingActionButton );
         botaoNovoPersonagem.setOnClickListener( new View.OnClickListener() {
@@ -42,6 +44,13 @@ public class ListaPersonagemActivity extends AppCompatActivity {
             }
         } );
     }
+
+    private void criaPersonagens() {
+        //Alguns personagens já prontos.
+        dao.salva(new Personagem( "Ken", "1,80", "02041979" ));
+        dao.salva(new Personagem( "Ryu", "1,90", "03051979" ));
+    }
+
     //Isso faz com que o dados não sejam apagados quando voltar.
     @Override
     protected void onResume() {
