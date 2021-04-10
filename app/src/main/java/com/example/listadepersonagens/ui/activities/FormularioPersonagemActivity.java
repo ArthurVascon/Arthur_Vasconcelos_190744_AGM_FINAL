@@ -21,19 +21,31 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
     //Isso permite usar o dao fora de proteção
     private final PersonagemDAO dao = new PersonagemDAO();
 
+    private Personagem Personagem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_formulario_personagem );
         //O título.
         setTitle( "Formulário de Personagens" );
+        inicializacaoCampos();
 
-        //Encontrar os campos pelo ID do campo
-        campoNome = findViewById( R.id.editText_nome );
-        campoAltura = findViewById( R.id.editText_altura);
-        campoNascimento = findViewById( R.id.editText_nascimento);
+        configuraBotao();
+        //Pegando os dados e setando nos campos devidos.
+        Intent dados = getIntent();
+        if(dados.hasExtra("personagem")) {
+            Personagem personagem = (Personagem) dados.getSerializableExtra("personagem");
+            campoNome.setText(personagem.getNome());
+            campoAltura.setText(personagem.getAltura());
+            campoNascimento.setText(personagem.getNascimento());
+        } else {
+            Personagem = new Personagem();
+        }
+    }
+
+    private void configuraBotao() {
         Button botaoSalvar = findViewById(R.id.button_salvar);
-
+        //Click do botão
         botaoSalvar.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,11 +64,12 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
                 dao.edita( personagemSalvo );
             }
         });
-        //Pegando os dados e setando nos campos devidos.
-        Intent dados = getIntent();
-        Personagem personagem = (Personagem) dados.getSerializableExtra( "personagem" );
-        campoNome.setText( personagem.getNome() );
-        campoAltura.setText( personagem.getAltura() );
-        campoNascimento.setText( personagem.getNascimento() );
+    }
+
+    private void inicializacaoCampos() {
+        //Encontrar os campos pelo ID do campo
+        campoNome = findViewById( R.id.editText_nome );
+        campoAltura = findViewById( R.id.editText_altura);
+        campoNascimento = findViewById( R.id.editText_nascimento);
     }
 }

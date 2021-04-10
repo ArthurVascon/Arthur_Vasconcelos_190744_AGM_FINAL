@@ -19,6 +19,12 @@ public class Personagem implements Serializable {
         this.nascimento = nascimento;
     }
 
+    public Personagem() {
+
+        this.nome = nome;
+        this.altura = altura;
+        this.nascimento = nascimento;
+    }
     public String getNome() {
         return nome;
     }
