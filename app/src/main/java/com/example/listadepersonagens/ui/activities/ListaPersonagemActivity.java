@@ -16,8 +16,6 @@ import com.example.listadepersonagens.dao.PersonagemDAO;
 import com.example.listadepersonagens.model.Personagem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ListaPersonagemActivity extends AppCompatActivity {
