@@ -12,6 +12,16 @@ public class PersonagemDAO {
     //Identificação do personagem
     private  static int contadorDeId = 1;
 
+    private Personagem buscaPersonagemId(Personagem personagem) {
+        for(Personagem p:
+                personagens){
+            if(p.getId() == personagem.getId()){
+                return p;
+            }
+        }
+        return null;
+    }
+
     //Salva um personagem e coloca o ID
     public void salva(Personagem personagemSalvo) {
         personagemSalvo.setId(contadorDeId);
@@ -20,22 +30,22 @@ public class PersonagemDAO {
     }
 //Método para edição do personagem, ele encontra ele pelo ID.
     public void edita(Personagem personagem){
-        Personagem personagemEscolhido = null;
-        for(Personagem p:
-        personagens){
-            if(p.getId() == personagem.getId()){
-            personagemEscolhido = p;
-            }
-        }
+        Personagem personagemEscolhido = buscaPersonagemId(personagem);
         if(personagemEscolhido != null){
-            int posicaoDoPersonagem = personagens.indexOf( personagemEscolhido );
-            personagens.set( posicaoDoPersonagem,personagem );
+            int posicaoDoPersonagem = personagens.indexOf(personagemEscolhido);
+            personagens.set(posicaoDoPersonagem,personagem);
+        }
+    }
+
+    public void remove(Personagem personagem){
+        Personagem personagemDevolvido = buscaPersonagemId(personagem);
+        if(personagemDevolvido != null){
+            personagens.remove(personagemDevolvido);
         }
     }
 
     //É o método que retorna TODOS os personagens (meio óbvio não? rs)
     public List<Personagem> todos() {
-
         return  new ArrayList<>(personagens);
     }
 }

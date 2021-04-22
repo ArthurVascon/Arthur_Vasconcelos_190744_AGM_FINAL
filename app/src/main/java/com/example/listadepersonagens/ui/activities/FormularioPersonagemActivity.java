@@ -12,7 +12,12 @@ import com.example.listadepersonagens.R;
 import com.example.listadepersonagens.dao.PersonagemDAO;
 import com.example.listadepersonagens.model.Personagem;
 
+import static com.example.listadepersonagens.ui.activities.ConstantesActivity.CHAVE_PERSONAGEM;
+
 public class FormularioPersonagemActivity extends AppCompatActivity {
+
+    public static final String TITULO_APP_BAR_EDITAR_PERSONAGEM = "Editar Personagem";
+    public static final String TITULO_APP_BAR_NOVO_PERSONAGEM = "Novo Personagem";
 
     //Atributos de um personagem
     private EditText campoNome;
@@ -21,7 +26,8 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
     //Isso permite usar o dao fora de proteção
     private final PersonagemDAO dao = new PersonagemDAO();
 
-    private Personagem Personagem;
+    private Personagem personagem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -29,41 +35,65 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         //O título.
         setTitle( "Formulário de Personagens" );
         inicializacaoCampos();
-
         configuraBotao();
         //Pegando os dados e setando nos campos devidos.
+        carregaPersonagem();
+    }
+    private void carregaPersonagem() {
         Intent dados = getIntent();
-        if(dados.hasExtra("personagem")) {
-            Personagem personagem = (Personagem) dados.getSerializableExtra("personagem");
-            campoNome.setText(personagem.getNome());
-            campoAltura.setText(personagem.getAltura());
-            campoNascimento.setText(personagem.getNascimento());
+        if (dados.hasExtra(CHAVE_PERSONAGEM)) {
+            //Titulo do Formulario de Editar
+            setTitle(TITULO_APP_BAR_EDITAR_PERSONAGEM);
+            personagem = (Personagem) dados.getSerializableExtra(CHAVE_PERSONAGEM);
+            preencheCampos();
         } else {
-            Personagem = new Personagem();
+            //Titulo do Formulario Novo
+            setTitle(TITULO_APP_BAR_NOVO_PERSONAGEM);
+            personagem = new Personagem();
+
         }
     }
 
+    private void preencheCampos() {
+        campoNome.setText(personagem.getNome());
+        campoAltura.setText(personagem.getAltura());
+        campoNascimento.setText(personagem.getNascimento());
+    }
+
+
+    
     private void configuraBotao() {
         Button botaoSalvar = findViewById(R.id.button_salvar);
         //Click do botão
         botaoSalvar.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String nome = campoNome.getText().toString();
-                String altura = campoAltura.getText().toString();
-                String nascimento = campoNascimento.getText().toString();
-                //Construtor mais o método de salvar o personagem
-                Personagem personagemSalvo = new Personagem(nome, altura, nascimento);
-                dao.salva(personagemSalvo);
-                finish();
-                //Setando os valores
-                personagemSalvo.setNome( nome );
-                personagemSalvo.setAltura( altura );
-                personagemSalvo.setNascimento( nascimento );
-                dao.edita( personagemSalvo );
+                finalizaFormulario();
             }
         });
+    }
+
+    private void finalizaFormulario() {
+        preenchePersonagem();
+        if (personagem.IdValido()) {
+            dao.edita(personagem);
+            finish();
+        } else {
+            dao.salva(personagem);
+        }
+        finish();
+    }
+
+    private void preenchePersonagem() {
+        //Setando os valores
+        String nome = campoNome.getText().toString();
+        String altura = campoAltura.getText().toString();
+        String nascimento = campoNascimento.getText().toString();
+
+        personagem.setNome(nome);
+        personagem.setAltura(altura);
+        personagem.setNascimento(nascimento);
+
     }
 
     private void inicializacaoCampos() {
@@ -72,4 +102,6 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         campoAltura = findViewById( R.id.editText_altura);
         campoNascimento = findViewById( R.id.editText_nascimento);
     }
+
+
 }

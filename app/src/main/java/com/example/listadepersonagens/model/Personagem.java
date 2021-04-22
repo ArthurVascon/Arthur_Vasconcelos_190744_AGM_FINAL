@@ -21,10 +21,8 @@ public class Personagem implements Serializable {
 
     public Personagem() {
 
-        this.nome = nome;
-        this.altura = altura;
-        this.nascimento = nascimento;
     }
+
     public String getNome() {
         return nome;
     }
@@ -58,6 +56,9 @@ public class Personagem implements Serializable {
     }
     public  int getId(){
         return id;
+    }
+    public boolean IdValido() {
+        return id>0;
     }
 }
 
