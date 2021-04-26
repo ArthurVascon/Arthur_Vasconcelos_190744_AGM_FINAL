@@ -2,6 +2,7 @@ package com.example.listadepersonagens.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.listadepersonagens.R;
 import com.example.listadepersonagens.dao.PersonagemDAO;
 import com.example.listadepersonagens.model.Personagem;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import static com.example.listadepersonagens.ui.activities.ConstantesActivity.CHAVE_PERSONAGEM;
 
@@ -27,6 +30,13 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
     private final PersonagemDAO dao = new PersonagemDAO();
 
     private Personagem personagem;
+
+    //Faz aparecer o menu com ícone
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_formulario_personagem_menu_salvar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +83,7 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         });
     }
 
+    //Verificação pra salvar o personagem ou editar ele.
     private void finalizaFormulario() {
         preenchePersonagem();
         if (personagem.IdValido()) {
@@ -101,6 +112,15 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         campoNome = findViewById( R.id.editText_nome );
         campoAltura = findViewById( R.id.editText_altura);
         campoNascimento = findViewById( R.id.editText_nascimento);
+
+        //Máscara de Campos - A partir daqui
+        SimpleMaskFormatter smfAltura = new SimpleMaskFormatter("N,NN");
+        MaskTextWatcher mtwAltura = new MaskTextWatcher(campoAltura, smfAltura);
+        campoAltura.addTextChangedListener(mtwAltura);
+
+        SimpleMaskFormatter smfNascimento = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtwNascimento = new MaskTextWatcher(campoNascimento, smfNascimento);
+        campoAltura.addTextChangedListener(mtwNascimento);
     }
 
 
