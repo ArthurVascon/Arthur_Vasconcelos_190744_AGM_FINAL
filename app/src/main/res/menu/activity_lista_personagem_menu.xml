@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/activity_lista_personagem_menu_remover"
+    android:title="Remover"
+    />
+
+    <item
+        android:id="@+id/activity_lista_personagem_menu_atualizar"
+        android:title="Atualizar"
+        />
+</menu>
