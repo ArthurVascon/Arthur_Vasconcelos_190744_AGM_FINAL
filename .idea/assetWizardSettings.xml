@@ -85,7 +85,19 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="C:\Users\artva\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="color" value="db8014" />
+                                                <entry key="imagePath" value="C:\Users\artva\AppData\Local\Temp\baseline_book_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="foregroundClipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/book/baseline_book_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -124,6 +136,15 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffed" />
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
+                                      <entry key="legacyIconShape" value="CIRCLE" />
+                                      <entry key="outputName" value="ic_app" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -292,11 +313,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

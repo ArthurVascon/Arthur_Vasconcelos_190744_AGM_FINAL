@@ -26,6 +26,11 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
     private EditText campoNome;
     private EditText campoAltura;
     private EditText campoNascimento;
+    private EditText campoEndereco;
+    private EditText campoGenero;
+    private EditText campoCep;
+    private EditText campoTelefone;
+    private EditText campoRg;
     //Isso permite usar o dao fora de proteção
     private final PersonagemDAO dao = new PersonagemDAO();
 
@@ -68,6 +73,11 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         campoNome.setText(personagem.getNome());
         campoAltura.setText(personagem.getAltura());
         campoNascimento.setText(personagem.getNascimento());
+        campoEndereco.setText(personagem.getEndereco());
+        campoGenero.setText(personagem.getGenero());
+        campoCep.setText(personagem.getCep());
+        campoTelefone.setText(personagem.getTelefone());
+        campoRg.setText(personagem.getRg());
     }
 
 
@@ -100,10 +110,20 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         String nome = campoNome.getText().toString();
         String altura = campoAltura.getText().toString();
         String nascimento = campoNascimento.getText().toString();
+        String endereco = campoEndereco.getText().toString();
+        String genero = campoGenero.getText().toString();
+        String cep = campoCep.getText().toString();
+        String telefone = campoTelefone.getText().toString();
+        String rg = campoRg.getText().toString();
 
         personagem.setNome(nome);
         personagem.setAltura(altura);
         personagem.setNascimento(nascimento);
+        personagem.setEndereco(endereco);
+        personagem.setGenero(genero);
+        personagem.setCep(cep);
+        personagem.setTelefone(telefone);
+        personagem.setRg(rg);
 
     }
 
@@ -112,6 +132,11 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         campoNome = findViewById( R.id.editText_nome );
         campoAltura = findViewById( R.id.editText_altura);
         campoNascimento = findViewById( R.id.editText_nascimento);
+        campoEndereco = findViewById(R.id.editText_endereco);
+        campoGenero = findViewById(R.id.editText_genero);
+        campoCep = findViewById(R.id.editText_cep);
+        campoTelefone = findViewById(R.id.editText_telefone);
+        campoRg = findViewById(R.id.editText_rg);
 
         //Máscara de Campos - A partir daqui
         SimpleMaskFormatter smfAltura = new SimpleMaskFormatter("N,NN");
@@ -120,7 +145,19 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
 
         SimpleMaskFormatter smfNascimento = new SimpleMaskFormatter("NN/NN/NNNN");
         MaskTextWatcher mtwNascimento = new MaskTextWatcher(campoNascimento, smfNascimento);
-        campoAltura.addTextChangedListener(mtwNascimento);
+        campoNascimento.addTextChangedListener(mtwNascimento);
+
+        SimpleMaskFormatter smfCep = new SimpleMaskFormatter("NNNNN-NNN");
+        MaskTextWatcher mtwCep = new MaskTextWatcher(campoCep, smfCep);
+        campoCep.addTextChangedListener(mtwCep);
+
+        SimpleMaskFormatter smfTelefone = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher mtwTelefone= new MaskTextWatcher(campoTelefone, smfTelefone);
+        campoTelefone.addTextChangedListener(mtwTelefone);
+
+        SimpleMaskFormatter smfRg = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        MaskTextWatcher mtwRg = new MaskTextWatcher(campoRg, smfRg);
+        campoRg.addTextChangedListener(mtwRg);
     }
 
 

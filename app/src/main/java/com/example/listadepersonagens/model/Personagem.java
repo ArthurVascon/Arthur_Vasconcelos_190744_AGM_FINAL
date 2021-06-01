@@ -10,17 +10,23 @@ public class Personagem implements Serializable {
     private  String nome;
     private  String altura;
     private  String nascimento;
+    private String endereco;
+    private String genero;
+    private String cep;
+    private String telefone;
+    private String rg;
     private int id =0;
 
-    public Personagem(String nome, String altura, String nascimento) {
+    public Personagem(String nome, String altura, String nascimento, String endereco, String genero, String cep, String telefone, String rg) {
 
         this.nome = nome;
         this.altura = altura;
         this.nascimento = nascimento;
-    }
-
-    public Personagem() {
-
+        this.endereco = endereco;
+        this.genero = genero;
+        this.cep = cep;
+        this.telefone = telefone;
+        this.rg = rg;
     }
 
     public String getNome() {
@@ -45,6 +51,30 @@ public class Personagem implements Serializable {
 
     public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public String getEndereco(){return  endereco;}
+
+    public void setEndereco(String endereco) { this.endereco = endereco;}
+
+    public String getGenero(){return genero;}
+
+    public void setGenero(String genero){this.genero = genero;}
+
+    public String getCep(){return cep;}
+
+    public void setCep(String cep){this.cep = cep;}
+
+    public String getTelefone(){return telefone;}
+
+    public void setTelefone(String telefone){this.telefone = telefone;}
+
+    public String getRg(){return rg;}
+
+    public void setRg(String rg){this.rg = rg;}
+
+    public Personagem() {
+
     }
     @NonNull
     @Override

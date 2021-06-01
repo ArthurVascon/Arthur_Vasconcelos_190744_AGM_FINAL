@@ -10,36 +10,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <EditText
-        android:id="@+id/editText_nome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nome"
-        android:inputType="textPersonName" />
+         <EditText
+            android:id="@+id/editText_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nome"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/editText_altura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Altura"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/editText_altura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Altura"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/editText_nascimento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nascimento"
-        android:inputType="textPersonName" />
-    //Não aparece porque tá gone - Não esquece.
-    <Button
-        android:id="@+id/button_salvar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar"
-        android:visibility="gone"
-        app:backgroundTint="#4CAF50" />
+        <EditText
+            android:id="@+id/editText_nascimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nascimento"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Endereço"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_genero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Gênero"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="CEP"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Telefone"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="RG"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button_salvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar"
+            android:visibility="visible"
+            app:backgroundTint="#4CAF50" />
     </LinearLayout>
 </ScrollView>
